@@ -1,212 +1,284 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html lang="en" dir="ltr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="copyright" href="http://creativecommons.org/licenses/by/3.0/">
-<title>HttpLuaModule</title>
-
-<style type="text/css">/*<![CDATA[*/
-.source-nginx {line-height: normal;}
-.source-nginx li, .source-nginx pre {
-	line-height: normal; border: 0px none white;
-}
-/**
- * GeSHi Dynamically Generated Stylesheet
- * --------------------------------------
- * Dynamically generated stylesheet for nginx
- * CSS class: source-nginx, CSS id: 
- * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
- * (http://qbnz.com/highlighter/ and http://geshi.org/)
- * --------------------------------------
- */
-.nginx.source-nginx .de1, .nginx.source-nginx .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
-.nginx.source-nginx  {font-family:monospace;}
-.nginx.source-nginx .imp {font-weight: bold; color: red;}
-.nginx.source-nginx li, .nginx.source-nginx .li1 {font-weight: normal; vertical-align:top;}
-.nginx.source-nginx .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
-.nginx.source-nginx .li2 {font-weight: bold; vertical-align:top;}
-.nginx.source-nginx .kw1 {color: #b1b100;}
-.nginx.source-nginx .kw2 {color: #000000; font-weight: bold;}
-.nginx.source-nginx .kw3 {color: #000066;}
-.nginx.source-nginx .kw4 {color: #993333;}
-.nginx.source-nginx .co1 {color: #808080; font-style: italic;}
-.nginx.source-nginx .co2 {color: #339933;}
-.nginx.source-nginx .coMULTI {color: #808080; font-style: italic;}
-.nginx.source-nginx .es0 {color: #000099; font-weight: bold;}
-.nginx.source-nginx .br0 {color: #66cc66;}
-.nginx.source-nginx .sy0 {color: #66cc66;}
-.nginx.source-nginx .st0 {color: #ff0000;}
-.nginx.source-nginx .me1 {color: #202020;}
-.nginx.source-nginx .me2 {color: #202020;}
-.nginx.source-nginx .ln-xtra, .nginx.source-nginx li.ln-xtra, .nginx.source-nginx div.ln-xtra {background-color: #ffc;}
-.nginx.source-nginx span.xtra { display:block; }
-
-/*]]>*/
-</style>
-<style type="text/css">/*<![CDATA[*/
-.source-text {line-height: normal;}
-.source-text li, .source-text pre {
-	line-height: normal; border: 0px none white;
-}
-/**
- * GeSHi Dynamically Generated Stylesheet
- * --------------------------------------
- * Dynamically generated stylesheet for text
- * CSS class: source-text, CSS id: 
- * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
- * (http://qbnz.com/highlighter/ and http://geshi.org/)
- * --------------------------------------
- */
-.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
-.text.source-text  {font-family:monospace;}
-.text.source-text .imp {font-weight: bold; color: red;}
-.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
-.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
-.text.source-text .li2 {font-weight: bold; vertical-align:top;}
-.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
-.text.source-text span.xtra { display:block; }
-
-/*]]>*/
-</style>
-<style type="text/css">/*<![CDATA[*/
-.source-lua {line-height: normal;}
-.source-lua li, .source-lua pre {
-	line-height: normal; border: 0px none white;
-}
-/**
- * GeSHi Dynamically Generated Stylesheet
- * --------------------------------------
- * Dynamically generated stylesheet for lua
- * CSS class: source-lua, CSS id: 
- * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
- * (http://qbnz.com/highlighter/ and http://geshi.org/)
- * --------------------------------------
- */
-.lua.source-lua .de1, .lua.source-lua .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
-.lua.source-lua  {font-family:monospace;}
-.lua.source-lua .imp {font-weight: bold; color: red;}
-.lua.source-lua li, .lua.source-lua .li1 {font-weight: normal; vertical-align:top;}
-.lua.source-lua .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
-.lua.source-lua .li2 {font-weight: bold; vertical-align:top;}
-.lua.source-lua .kw1 {color: #b1b100;}
-.lua.source-lua .co1 {color: #808080; font-style: italic;}
-.lua.source-lua .coMULTI {color: #808080; font-style: italic;}
-.lua.source-lua .es0 {color: #000099; font-weight: bold;}
-.lua.source-lua .br0 {color: #66cc66;}
-.lua.source-lua .sy0 {color: #66cc66;}
-.lua.source-lua .st0 {color: #ff0000;}
-.lua.source-lua .nu0 {color: #cc66cc;}
-.lua.source-lua .me0 {color: #b1b100;}
-.lua.source-lua .ln-xtra, .lua.source-lua li.ln-xtra, .lua.source-lua div.ln-xtra {background-color: #ffc;}
-.lua.source-lua span.xtra { display:block; }
-
-/*]]>*/
-</style>
-<style type="text/css">/*<![CDATA[*/
-.source-bash {line-height: normal;}
-.source-bash li, .source-bash pre {
-	line-height: normal; border: 0px none white;
-}
-/**
- * GeSHi Dynamically Generated Stylesheet
- * --------------------------------------
- * Dynamically generated stylesheet for bash
- * CSS class: source-bash, CSS id: 
- * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
- * (http://qbnz.com/highlighter/ and http://geshi.org/)
- * --------------------------------------
- */
-.bash.source-bash .de1, .bash.source-bash .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
-.bash.source-bash  {font-family:monospace;}
-.bash.source-bash .imp {font-weight: bold; color: red;}
-.bash.source-bash li, .bash.source-bash .li1 {font-weight: normal; vertical-align:top;}
-.bash.source-bash .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
-.bash.source-bash .li2 {font-weight: bold; vertical-align:top;}
-.bash.source-bash .kw1 {color: #000000; font-weight: bold;}
-.bash.source-bash .kw2 {color: #c20cb9; font-weight: bold;}
-.bash.source-bash .kw3 {color: #7a0874; font-weight: bold;}
-.bash.source-bash .co0 {color: #666666; font-style: italic;}
-.bash.source-bash .co1 {color: #800000;}
-.bash.source-bash .co2 {color: #cc0000; font-style: italic;}
-.bash.source-bash .co3 {color: #000000; font-weight: bold;}
-.bash.source-bash .es1 {color: #000099; font-weight: bold;}
-.bash.source-bash .es2 {color: #007800;}
-.bash.source-bash .es3 {color: #007800;}
-.bash.source-bash .es4 {color: #007800;}
-.bash.source-bash .es5 {color: #780078;}
-.bash.source-bash .es_h {color: #000099; font-weight: bold;}
-.bash.source-bash .br0 {color: #7a0874; font-weight: bold;}
-.bash.source-bash .sy0 {color: #000000; font-weight: bold;}
-.bash.source-bash .st0 {color: #ff0000;}
-.bash.source-bash .st_h {color: #ff0000;}
-.bash.source-bash .nu0 {color: #000000;}
-.bash.source-bash .re0 {color: #007800;}
-.bash.source-bash .re1 {color: #007800;}
-.bash.source-bash .re2 {color: #007800;}
-.bash.source-bash .re4 {color: #007800;}
-.bash.source-bash .re5 {color: #660033;}
-.bash.source-bash .ln-xtra, .bash.source-bash li.ln-xtra, .bash.source-bash div.ln-xtra {background-color: #ffc;}
-.bash.source-bash span.xtra { display:block; }
-
-/*]]>*/
-</style>
-<style>
-	.editsection, #toolbar, #user-tools { display: none; }      
-      </style>
-</head>
-<body id="globalWrapper">
-	<div id="content">
-	  
-	  
-            
-
-	  <h1 class="firstHeading">HttpLuaModule</h1>
-
-	  <div id="bodyContent">
-	     
-	    	    	    
+<html><body>
+<div id="bodyContent">
+	    <div id="contentSub"></div> 
+	    	    	    <!-- start content -->
 	    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">
+<h1> <span class="mw-headline" id="Name"> Name </span>
+</h1>
+<p>ngx_lua - Embed the power of Lua into Nginx
+</p>
+<p><i>This module is not distributed with the Nginx source.</i> See <a href="#Installation">the installation instructions</a>.
+</p>
+<h1> <span class="mw-headline" id="Status"> Status </span>
+</h1>
+<p>This module is under active development and is production ready.
+</p>
+<h1> <span class="mw-headline" id="Version"> Version </span>
+</h1>
+<p>This document describes ngx_lua <a rel="nofollow" class="external text" href="https://github.com/chaoslawful/lua-nginx-module/tags">v0.9.4</a> released on 10 January 2014.
+</p>
+<h1> <span class="mw-headline" id="Synopsis"> Synopsis </span>
+</h1>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">    <span class="co1"># set search paths for pure Lua external libraries (';;' is the default path):</span>
+    lua_package_path <span class="st0">'/foo/bar/?.lua;/blah/?.lua;;'</span><span class="sy0">;</span>
+ 
+    <span class="co1"># set search paths for Lua external libraries written in C (can also use ';;'):</span>
+    lua_package_cpath <span class="st0">'/bar/baz/?.so;/blah/blah/?.so;;'</span><span class="sy0">;</span>
+ 
+    <a href="/NginxHttpCoreModule#server"><span class="kw3">server</span></a> <span class="br0">{</span>
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /inline_concat <span class="br0">{</span>
+            <span class="co1"># MIME type determined by default_type:</span>
+            <a href="/NginxHttpCoreModule#default_type"><span class="kw3">default_type</span></a> <span class="st0">'text/plain'</span><span class="sy0">;</span>
+ 
+            <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$a</span> <span class="st0">"hello"</span><span class="sy0">;</span>
+            <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$b</span> <span class="st0">"world"</span><span class="sy0">;</span>
+            <span class="co1"># inline Lua script</span>
+            set_by_lua <span class="re0">$res</span> <span class="st0">"return ngx.arg[1]..ngx.arg[2]"</span> <span class="re0">$a</span> <span class="re0">$b</span><span class="sy0">;</span>
+            echo <span class="re0">$res</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /rel_file_concat <span class="br0">{</span>
+            <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$a</span> <span class="st0">"foo"</span><span class="sy0">;</span>
+            <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$b</span> <span class="st0">"bar"</span><span class="sy0">;</span>
+            <span class="co1"># script path relative to nginx prefix</span>
+            <span class="co1"># $ngx_prefix/conf/concat.lua contents:</span>
+            <span class="co1">#</span>
+            <span class="co1">#    return ngx.arg[1]..ngx.arg[2]</span>
+            <span class="co1">#</span>
+            set_by_lua_file <span class="re0">$res</span> conf/concat.lua <span class="re0">$a</span> <span class="re0">$b</span><span class="sy0">;</span>
+            echo <span class="re0">$res</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /abs_file_concat <span class="br0">{</span>
+            <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$a</span> <span class="st0">"fee"</span><span class="sy0">;</span>
+            <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$b</span> <span class="st0">"baz"</span><span class="sy0">;</span>
+            <span class="co1"># absolute script path not modified</span>
+            set_by_lua_file <span class="re0">$res</span> /usr/nginx/conf/concat.lua <span class="re0">$a</span> <span class="re0">$b</span><span class="sy0">;</span>
+            echo <span class="re0">$res</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /lua_content <span class="br0">{</span>
+            <span class="co1"># MIME type determined by default_type:</span>
+            <a href="/NginxHttpCoreModule#default_type"><span class="kw3">default_type</span></a> <span class="st0">'text/plain'</span><span class="sy0">;</span>
+ 
+            content_by_lua <span class="st0">"ngx.say('Hello,world!')"</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+         <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /nginx_var <span class="br0">{</span>
+            <span class="co1"># MIME type determined by default_type:</span>
+            <a href="/NginxHttpCoreModule#default_type"><span class="kw3">default_type</span></a> <span class="st0">'text/plain'</span><span class="sy0">;</span>
+ 
+            <span class="co1"># try access /nginx_var?a=hello,world</span>
+            content_by_lua <span class="st0">"ngx.print(ngx.var['arg_a'], '<span class="es0">\\</span>n')"</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /request_body <span class="br0">{</span>
+             <span class="co1"># force reading request body (default off)</span>
+             lua_need_request_body on<span class="sy0">;</span>
+             <a href="/NginxHttpCoreModule#client_max_body_size"><span class="kw3">client_max_body_size</span></a> 50k<span class="sy0">;</span>
+             <a href="/NginxHttpCoreModule#client_body_buffer_size"><span class="kw3">client_body_buffer_size</span></a> 50k<span class="sy0">;</span>
+ 
+             content_by_lua <span class="st0">'ngx.print(ngx.var.request_body)'</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <span class="co1"># transparent non-blocking I/O in Lua via subrequests</span>
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /lua <span class="br0">{</span>
+            <span class="co1"># MIME type determined by default_type:</span>
+            <a href="/NginxHttpCoreModule#default_type"><span class="kw3">default_type</span></a> <span class="st0">'text/plain'</span><span class="sy0">;</span>
+ 
+            content_by_lua <span class="st0">'
+                local res = ngx.location.capture("/some_other_location")
+                if res.status == 200 then
+                    ngx.print(res.body)
+                end'</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <span class="co1"># GET /recur?num=5</span>
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /recur <span class="br0">{</span>
+            <span class="co1"># MIME type determined by default_type:</span>
+            <a href="/NginxHttpCoreModule#default_type"><span class="kw3">default_type</span></a> <span class="st0">'text/plain'</span><span class="sy0">;</span>
+ 
+            content_by_lua <span class="st0">'
+               local num = tonumber(ngx.var.arg_num) or 0
+ 
+               if num &gt; 50 then
+                   ngx.say("num too big")
+                   return
+               end
+ 
+               ngx.say("num is: ", num)
+ 
+               if num &gt; 0 then
+                   res = ngx.location.capture("/recur?num=" .. tostring(num - 1))
+                   ngx.print("status=", res.status, " ")
+                   ngx.print("body=", res.body)
+               else
+                   ngx.say("end")
+               end
+               '</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /foo <span class="br0">{</span>
+            rewrite_by_lua <span class="st0">'
+                res = ngx.location.capture("/memc",
+                    { args = { cmd = "incr", key = ngx.var.uri } }
+                )
+            '</span><span class="sy0">;</span>
+ 
+            <a href="/NginxHttpProxyModule#proxy_pass"><span class="kw21">proxy_pass</span></a> <a href="/NginxHttpCoreModule#http"><span class="kw3">http</span></a>://blah.blah.com<span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /blah <span class="br0">{</span>
+            access_by_lua <span class="st0">'
+                local res = ngx.location.capture("/auth")
+ 
+                if res.status == ngx.HTTP_OK then
+                    return
+                end
+ 
+                if res.status == ngx.HTTP_FORBIDDEN then
+                    ngx.exit(res.status)
+                end
+ 
+                ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
+            '</span><span class="sy0">;</span>
+ 
+            <span class="co1"># proxy_pass/fastcgi_pass/postgres_pass/...</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /mixed <span class="br0">{</span>
+            rewrite_by_lua_file /path/to/<a href="/NginxHttpRewriteModule#rewrite"><span class="kw22">rewrite</span></a>.lua<span class="sy0">;</span>
+            access_by_lua_file /path/to/access.lua<span class="sy0">;</span>
+            content_by_lua_file /path/to/content.lua<span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <span class="co1"># use nginx var in code path</span>
+        <span class="co1"># WARN: contents in nginx var must be carefully filtered,</span>
+        <span class="co1"># otherwise there'll be great security risk!</span>
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> <span class="sy0">~</span> ^/app/<span class="br0">(</span>.+<span class="br0">)</span> <span class="br0">{</span>
+                content_by_lua_file /path/to/lua/app/<a href="/NginxHttpCoreModule#root"><span class="kw3">root</span></a>/$<span class="nu0">1</span>.lua<span class="sy0">;</span>
+        <span class="br0">}</span>
+ 
+        <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> / <span class="br0">{</span>
+           lua_need_request_body on<span class="sy0">;</span>
+ 
+           <a href="/NginxHttpCoreModule#client_max_body_size"><span class="kw3">client_max_body_size</span></a> 100k<span class="sy0">;</span>
+           <a href="/NginxHttpCoreModule#client_body_buffer_size"><span class="kw3">client_body_buffer_size</span></a> 100k<span class="sy0">;</span>
+ 
+           access_by_lua <span class="st0">'
+               -- check the client IP address is in our black list
+               if ngx.var.remote_addr == "132.5.72.3" then
+                   ngx.exit(ngx.HTTP_FORBIDDEN)
+               end
+ 
+               -- check if the request body contains bad words
+               if ngx.var.request_body and
+                        string.match(ngx.var.request_body, "fsck")
+               then
+                   return ngx.redirect("/terms_of_use.html")
+               end
+ 
+               -- tests passed
+           '</span><span class="sy0">;</span>
+ 
+           <span class="co1"># proxy_pass/fastcgi_pass/etc settings</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span></pre></div></div>
+<h1> <span class="mw-headline" id="Description"> Description </span>
+</h1>
+<p>This module embeds Lua, via the standard Lua 5.1 interpreter or <a rel="nofollow" class="external text" href="http://luajit.org/luajit.html">LuaJIT 2.0/2.1</a>, into Nginx and by leveraging Nginx's subrequests, allows the integration of the powerful Lua threads (Lua coroutines) into the Nginx event model.
+</p>
+<p>Unlike <a rel="nofollow" class="external text" href="http://httpd.apache.org/docs/2.3/mod/mod_lua.html">Apache's mod_lua</a> and <a rel="nofollow" class="external text" href="http://redmine.lighttpd.net/wiki/1/Docs:ModMagnet">Lighttpd's mod_magnet</a>, Lua code executed using this module can be <i>100% non-blocking</i> on network traffic as long as the <a href="#Nginx_API_for_Lua">Nginx API for Lua</a> provided by this module is used to handle
+requests to upstream services such as MySQL, PostgreSQL, Memcached, Redis, or upstream HTTP web services.
+</p>
+<p>At least the following Lua libraries and Nginx modules can be used with this ngx_lua module:
+</p>
+<ul>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-memcached">lua-resty-memcached</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-mysql">lua-resty-mysql</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-redis">lua-resty-redis</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-dns">lua-resty-dns</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-upload">lua-resty-upload</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-websocket">lua-resty-websocket</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-lock">lua-resty-lock</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-string">lua-resty-string</a>
+</li>
+<li> <a href="/HttpMemcModule" title="HttpMemcModule">ngx_memc</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/FRiCKLE/ngx_postgres">ngx_postgres</a>
+</li>
+<li> <a href="/HttpRedis2Module" title="HttpRedis2Module">ngx_redis2</a>
+</li>
+<li> <a href="/HttpRedisModule" title="HttpRedisModule" class="mw-redirect">ngx_redis</a>
+</li>
+<li> <a href="/HttpProxyModule" title="HttpProxyModule">ngx_proxy</a>
+</li>
+<li> <a href="/HttpFastcgiModule" title="HttpFastcgiModule">ngx_fastcgi</a>
+</li>
+</ul>
+<p>Almost all the Nginx modules can be used with this ngx_lua module by means of <a href="#ngx.location.capture">ngx.location.capture</a> or <a href="#ngx.location.capture_multi">ngx.location.capture_multi</a> but it is recommended to use those <code>lua-resty-*</code> libraries instead of creating subrequests to access the Nginx upstream modules because the former is usually much more flexible and memory-efficient.
+</p>
+<p>The Lua interpreter or LuaJIT instance is shared across all the requests in a single nginx worker process but request contexts are segregated using lightweight Lua coroutines.
+</p>
+<p>Loaded Lua modules persist in the nginx worker process level resulting in a small memory footprint in Lua even when under heavy loads.
+</p>
 <h1> <span class="mw-headline" id="Directives"> Directives </span>
 </h1>
+<h2> <span class="mw-headline" id="lua_use_default_type"> lua_use_default_type </span>
+</h2>
+<p><b>syntax:</b> <i>lua_use_default_type on | off</i>
+</p>
+<p><b>default:</b> <i>lua_use_default_type on</i>
+</p>
+<p><b>context:</b> <i>http, server, location, location if</i>
+</p>
+<p>Specifies whether to use the MIME type specified by the <a rel="nofollow" class="external text" href="http://nginx.org/en/docs/http/ngx_http_core_module.html#default_type">default_type</a> directive for the default value of the <code>Content-Type</code> response header. If you do not want a default <code>Content-Type</code> response header for your Lua request handlers, then turn this directive off.
+</p>
+<p>This directive is turned on by default.
+</p>
+<p>This directive was first introduced in the <code>v0.9.1</code> release.
+</p>
 <h2> <span class="mw-headline" id="lua_code_cache"> lua_code_cache </span>
 </h2>
 <p><b>syntax:</b> <i>lua_code_cache on | off</i>
 </p>
 <p><b>default:</b> <i>lua_code_cache on</i>
 </p>
-<p><b>context:</b> <i>main, server, location, location if</i>
+<p><b>context:</b> <i>http, server, location, location if</i>
 </p>
-<p>Enables or disables the Lua code cache for <a href="#set_by_lua_file">set_by_lua_file</a>,
-<a href="#content_by_lua_file">content_by_lua_file</a>, <a href="#rewrite_by_lua_file">rewrite_by_lua_file</a>, and
-<a href="#access_by_lua_file">access_by_lua_file</a>, and also force Lua module reloading on a per-request basis.
+<p>Enables or disables the Lua code cache for Lua code in <code>*_by_lua_file</code> directives (like <a href="#set_by_lua_file">set_by_lua_file</a> and
+<a href="#content_by_lua_file">content_by_lua_file</a>) and Lua modules.
 </p>
-<p>The Lua files referenced in <a href="#set_by_lua_file">set_by_lua_file</a>,
+<p>When turning off, every request served by ngx_lua will run in a separate Lua VM instance, starting from the <code>0.9.3</code> release. So the Lua files referenced in <a href="#set_by_lua_file">set_by_lua_file</a>,
 <a href="#content_by_lua_file">content_by_lua_file</a>, <a href="#access_by_lua_file">access_by_lua_file</a>,
-and <a href="#rewrite_by_lua_file">rewrite_by_lua_file</a> will not be cached
-and the Lua <code>package.loaded</code> table will be cleared
-at the entry point of every request (such that Lua modules
-will not be cached either). With this in place, developers can adopt an edit-and-refresh approach.
+and etc will not be cached
+and all Lua modules used will be loaded from scratch. With this in place, developers can adopt an edit-and-refresh approach.
 </p>
 <p>Please note however, that Lua code written inlined within nginx.conf
 such as those specified by <a href="#set_by_lua">set_by_lua</a>, <a href="#content_by_lua">content_by_lua</a>,
-<a href="#access_by_lua">access_by_lua</a>, and <a href="#rewrite_by_lua">rewrite_by_lua</a> will <i>always</i> be
-cached because only the Nginx config file parser can correctly parse the <code>nginx.conf</code>
-file and the only ways to to reload the config file
-are to send a <code>HUP</code> signal or to restart Nginx.
+<a href="#access_by_lua">access_by_lua</a>, and <a href="#rewrite_by_lua">rewrite_by_lua</a> will not be updated when you edit the inlined Lua code in your <code>nginx.conf</code> file because only the Nginx config file parser can correctly parse the <code>nginx.conf</code>
+file and the only way is to reload the config file
+by sending a <code>HUP</code> signal or just to restart Nginx.
 </p>
-<p>Also, Lua files which are loaded by <code>dofile</code> or <code>loadfile</code>
-in *_by_lua_file will never be cached. To ensure code caching, you can either use the <a href="#init_by_lua">init_by_lua</a>
+<p>Even when the code cache is enabled, Lua files which are loaded by <code>dofile</code> or <code>loadfile</code>
+in *_by_lua_file cannot be cached (unless you cache the results yourself). Usually you can either use the <a href="#init_by_lua">init_by_lua</a>
 or <a href="#init-by_lua_file">init_by_lua_file</a> directives to load all such files or just make these Lua files true Lua modules
 and load them via <code>require</code>.
 </p>
-<p>The ngx_lua module does not currently support the <code>stat</code> mode available with the
-Apache <code>mod_lua</code> module but this is planned for implementation in the future.
+<p>The ngx_lua module does not support the <code>stat</code> mode available with the
+Apache <code>mod_lua</code> module (yet).
 </p>
 <p>Disabling the Lua code cache is strongly
 discouraged for production use and should only be used during 
-development as it has a significant negative impact on overall performance.
-In addition, race conditions when reloading Lua modules are common for concurrent requests
-when the code cache is disabled.
+development as it has a significant negative impact on overall performance. For example, the performance a "hello world" Lua example can drop by an order of magnitude after disabling the Lua code cache.
 </p>
 <h2> <span class="mw-headline" id="lua_regex_cache_max_entries"> lua_regex_cache_max_entries </span>
 </h2>
@@ -247,7 +319,7 @@ when the code cache is disabled.
 </p>
 <p><b>default:</b> <i>The content of LUA_PATH environ variable or Lua's compiled-in defaults.</i>
 </p>
-<p><b>context:</b> <i>main</i>
+<p><b>context:</b> <i>http</i>
 </p>
 <p>Sets the Lua module search path used by scripts specified by <a href="#set_by_lua">set_by_lua</a>,
 <a href="#content_by_lua">content_by_lua</a> and others. The path string is in standard Lua path form, and <code>;;</code>
@@ -261,7 +333,7 @@ can be used to stand for the original search paths.
 </p>
 <p><b>default:</b> <i>The content of LUA_CPATH environment variable or Lua's compiled-in defaults.</i>
 </p>
-<p><b>context:</b> <i>main</i>
+<p><b>context:</b> <i>http</i>
 </p>
 <p>Sets the Lua C-module search path used by scripts specified by <a href="#set_by_lua">set_by_lua</a>,
 <a href="#content_by_lua">content_by_lua</a> and others. The cpath string is in standard Lua cpath form, and <code>;;</code>
@@ -342,6 +414,56 @@ can be used to stand for the original cpath.
 <p>When a relative path like <code>foo/bar.lua</code> is given, they will be turned into the absolute path relative to the <code>server prefix</code> path determined by the <code>-p PATH</code> command-line option while starting the Nginx server.
 </p>
 <p>This directive was first introduced in the <code>v0.5.5</code> release.
+</p>
+<h2> <span class="mw-headline" id="init_worker_by_lua"> init_worker_by_lua </span>
+</h2>
+<p><b>syntax:</b> <i>init_worker_by_lua &lt;lua-script-str&gt;</i>
+</p>
+<p><b>context:</b> <i>http</i>
+</p>
+<p><b>phase:</b> <i>starting-worker</i>
+</p>
+<p>Runs the specified Lua code upon every Nginx worker process's startup when the master process is enabled. When the master process is disabled, this hook will just run after <a href="#init_by_lua">init_by_lua*</a>.
+</p>
+<p>This hook is often used to create per-worker reoccurring timers (via the <a href="#ngx.timer.at">ngx.timer.at</a> Lua API), either for backend healthcheck or other timed routine work. Below is an example,
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">    init_worker_by_lua <span class="st0">'
+        local delay = 3  -- in seconds
+        local new_timer = ngx.timer.at
+        local log = ngx.log
+        local ERR = ngx.ERR
+        local check
+ 
+        check = function(premature)
+            if not premature then
+                -- do the health check or other routine work
+                local ok, err = new_timer(delay, check)
+                if not ok then
+                    log(ERR, "failed to create timer: ", err)
+                    return
+                end
+            end
+        end
+ 
+        local ok, err = new_timer(delay, check)
+        if not ok then
+            log(ERR, "failed to create timer: ", err)
+            return
+        end
+    '</span><span class="sy0">;</span></pre></div></div>
+<p>This directive was first introduced in the <code>v0.9.5</code> release.
+</p>
+<h2> <span class="mw-headline" id="init_worker_by_lua_file"> init_worker_by_lua_file </span>
+</h2>
+<p><b>syntax:</b> <i>init_worker_by_lua_file &lt;lua-file-path&gt;</i>
+</p>
+<p><b>context:</b> <i>http</i>
+</p>
+<p><b>phase:</b> <i>starting-worker</i>
+</p>
+<p>Similar to <a href="#init_worker_by_lua">init_worker_by_lua</a>, but accepts the file path to a Lua source file or Lua bytecode file.
+</p>
+<p>This directive was first introduced in the <code>v0.9.5</code> release.
 </p>
 <h2> <span class="mw-headline" id="set_by_lua"> set_by_lua </span>
 </h2>
@@ -459,12 +581,12 @@ The Lua code may make <a href="#Nginx_API_for_Lua">API calls</a> and is executed
 </p>
 <p>Note that this handler always runs <i>after</i> the standard <a href="/HttpRewriteModule" title="HttpRewriteModule">HttpRewriteModule</a>. So the following will work as expected:
 </p>
-<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">   <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /foo <span class="br0">{</span>
-       <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$a</span> <span class="nu0">12</span><span class="sy0">;</span> <span class="co1"># create and initialize $a</span>
-       <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$b</span> <span class="st0">""</span><span class="sy0">;</span> <span class="co1"># create and initialize $b</span>
-       rewrite_by_lua <span class="st0">'ngx.var.b = tonumber(ngx.var.a) + 1'</span><span class="sy0">;</span>
-       echo <span class="st0">"res = $b"</span><span class="sy0">;</span>
-   <span class="br0">}</span></pre></div></div>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">    <a href="/NginxHttpCoreModule#location"><span class="kw3">location</span></a> /foo <span class="br0">{</span>
+        <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$a</span> <span class="nu0">12</span><span class="sy0">;</span> <span class="co1"># create and initialize $a</span>
+        <a href="/NginxHttpRewriteModule#set"><span class="kw22">set</span></a> <span class="re0">$b</span> <span class="st0">""</span><span class="sy0">;</span> <span class="co1"># create and initialize $b</span>
+        rewrite_by_lua <span class="st0">'ngx.var.b = tonumber(ngx.var.a) + 1'</span><span class="sy0">;</span>
+        echo <span class="st0">"res = $b"</span><span class="sy0">;</span>
+    <span class="br0">}</span></pre></div></div>
 <p>because <code>set $a 12</code> and <code>set $b ""</code> run <i>before</i> <a href="#rewrite_by_lua">rewrite_by_lua</a>.
 </p>
 <p>On the other hand, the following will not work as expected:
@@ -894,7 +1016,7 @@ about to run (i.e., the request body will be read during the content phase).
 </p>
 <h2> <span class="mw-headline" id="lua_socket_connect_timeout"> lua_socket_connect_timeout </span>
 </h2>
-<p><b>syntax:</b> <i>lua_socket_connect_timeout &lt;time&gt;</i>
+<p><b>syntax:</b> <i>lua_socket_connect_timeout <time></time></i>
 </p>
 <p><b>default:</b> <i>lua_socket_connect_timeout 60s</i>
 </p>
@@ -1276,7 +1398,7 @@ interface as well, by writing <code>ngx.var[1]</code>, <code>ngx.var[2]</code>, 
 </h2>
 <p><b>syntax:</b> <i>print(...)</i>
 </p>
-<p><b>context:</b> <i>init_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_by_lua*, init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Writes argument values into the nginx <code>error.log</code> file with the <code>ngx.NOTICE</code> log level.
 </p>
@@ -1289,7 +1411,7 @@ interface as well, by writing <code>ngx.var[1]</code>, <code>ngx.var[2]</code>, 
 </p>
 <h2> <span class="mw-headline" id="ngx.ctx"> ngx.ctx </span>
 </h2>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>This table can be used to store per-request Lua context data and has a life time identical to the current request (as with the Nginx variables). 
 </p>
@@ -1364,6 +1486,8 @@ interface as well, by writing <code>ngx.var[1]</code>, <code>ngx.var[2]</code>, 
 <p>Overriding <code>ngx.ctx</code> with a new Lua table is also supported, for example,
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    ngx.ctx <span class="sy0">=</span> <span class="br0">{</span> foo <span class="sy0">=</span> <span class="nu0">32</span>, bar <span class="sy0">=</span> <span class="nu0">54</span> <span class="br0">}</span></pre></div></div>
+<p>When being used in the context of <a href="#init_worker_by_lua">init_worker_by_lua*</a>, this table just has the same lifetime of the current Lua handler.
+</p>
 <h2> <span class="mw-headline" id="ngx.location.capture"> ngx.location.capture </span>
 </h2>
 <p><b>syntax:</b> <i>res = ngx.location.capture(uri, options?)</i>
@@ -2304,7 +2428,7 @@ Chunked request bodies are not yet supported in this API.
 </p>
 <p>Since the <code>v0.9.0</code> release, this function accepts an optional boolean <code>raw</code> argument. When this argument is <code>true</code>, this function returns a full duplex cosocket object wrapping around the raw downstream connection socket, upon which you can call the <a href="#tcpsock:receive">receive</a>, <a href="#tcpsock:receiveuntil">receiveuntil</a>, and <a href="#tcpsock:send">send</a> methods.
 </p>
-<p>When the <code>raw</code> argument is <code>true</code>, it is required that no pending data from any previous <a href="#ngx.say">ngx.say</a>, <a href="#ngx.print">ngx.print</a>, or <a href="#ngx.send_headers">ngx.send_headers</a> calls exists. So if you have these downstream output calls previously, you should call <a href="#ngx.flush">ngx.flush(true)</a> before calling <code>ngx.req.socket(true)</code> to ensure that there is no pending output data. Another requirement for this case is that the request body must have already been read completely.
+<p>When the <code>raw</code> argument is <code>true</code>, it is required that no pending data from any previous <a href="#ngx.say">ngx.say</a>, <a href="#ngx.print">ngx.print</a>, or <a href="#ngx.send_headers">ngx.send_headers</a> calls exists. So if you have these downstream output calls previously, you should call <a href="#ngx.flush">ngx.flush(true)</a> before calling <code>ngx.req.socket(true)</code> to ensure that there is no pending output data. If the request body has not been read yet, then this "raw socket" can also be used to read the request body.
 </p>
 <p>You can use the "raw request socket" returned by <code>ngx.req.socket(true)</code> to implement fancy protocols like <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/WebSocket">WebSocket</a>, or just emit your own raw HTTP response header or body data. You can refer to the <a rel="nofollow" class="external text" href="https://github.com/agentzh/lua-resty-websocket">lua-resty-websocket library</a> for a real world example.
 </p>
@@ -2461,7 +2585,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>ngx.log(log_level, ...)</i>
 </p>
-<p><b>context:</b> <i>init_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_by_lua*, init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Log arguments concatenated to error.log with the given logging level.
 </p>
@@ -2493,7 +2617,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>ngx.exit(status)</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*</i>
 </p>
 <p>When <code>status &gt;= 200</code> (i.e., <code>ngx.HTTP_OK</code> and above), it will interrupt the execution of the current request and return status code to nginx.
 </p>
@@ -2524,7 +2648,9 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    ngx.<span class="kw1">exit</span><span class="br0">(</span><span class="nu0">501</span><span class="br0">)</span></pre></div></div>
 <p>Note that while this method accepts all <a href="#HTTP_status_constants">HTTP status constants</a> as input, it only accepts <code>NGX_OK</code> and <code>NGX_ERROR</code> of the <a href="#core_constants">core constants</a>.
 </p>
-<p>It is recommended, though not necessary, to combine the <code>return</code> statement with this call, i.e., <code>return ngx.exit(...)</code>, to give a visual hint to others reading the code.
+<p>It is recommended, though not necessary (for contexts other than <a href="#header_filter_by_lua">header_filter_by_lua</a>, to combine the <code>return</code> statement with this call, i.e., <code>return ngx.exit(...)</code>, to give a visual hint to others reading the code.
+</p>
+<p>When being used in the context of <a href="#header_filter_by_lua">header_filter_by_lua</a>, <code>ngx.exit()</code> is an asynchronous operation and will return immediately. This behavior might change in the future. So always use <code>return</code> at the same time, as suggested above.
 </p>
 <h2> <span class="mw-headline" id="ngx.eof"> ngx.eof </span>
 </h2>
@@ -2540,13 +2666,15 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
         <a href="/NginxHttpCoreModule#keepalive_timeout"><span class="kw3">keepalive_timeout</span></a> <span class="nu0">0</span><span class="sy0">;</span>
         content_by_lua <span class="st0">'
             ngx.say("got the task!")
-            ngx.eof()  -- descent HTTP client will close the connection at this point
+            ngx.eof()  -- a descent HTTP client will close the connection at this point
             -- access MySQL, PostgreSQL, Redis, Memcached, and etc here...
         '</span><span class="sy0">;</span>
     <span class="br0">}</span></pre></div></div>
 <p>But if you create subrequests to access other locations configured by Nginx upstream modules, then you should configure those upstream modules to ignore client connection abortions if they are not by default. For example, by default the standard <a href="/HttpProxyModule" title="HttpProxyModule">HttpProxyModule</a> will terminate both the subrequest and the main request as soon as the client closes the connection, so it is important to turn on the <a href="/HttpProxyModule#proxy_ignore_client_abort" title="HttpProxyModule">proxy_ignore_client_abort</a> directive in your location block configured by <a href="/HttpProxyModule" title="HttpProxyModule">HttpProxyModule</a>:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">    <a href="/NginxHttpProxyModule#proxy_ignore_client_abort"><span class="kw21">proxy_ignore_client_abort</span></a> on<span class="sy0">;</span></pre></div></div>
+<p>A better way to do background jobs is to use the <a href="#ngx.timer.at">ngx.timer.at</a> API.
+</p>
 <p>Since <code>v0.8.3</code> this function returns <code>1</code> on success, or returns <code>nil</code> and a string describing the error otherwise.
 </p>
 <h2> <span class="mw-headline" id="ngx.sleep"> ngx.sleep </span>
@@ -2567,7 +2695,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>newstr = ngx.escape_uri(str)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_by_lua*, init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Escape <code>str</code> as a URI component.
 </p>
@@ -2575,7 +2703,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>newstr = ngx.unescape_uri(str)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_by_lua*, init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Unescape <code>str</code> as an escaped URI component.
 </p>
@@ -2755,7 +2883,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>str = ngx.today()</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Returns current date (in the format <code>yyyy-mm-dd</code>) from the nginx cached time (no syscall involved unlike Lua's date library).
 </p>
@@ -2765,7 +2893,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>secs = ngx.time()</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Returns the elapsed seconds from the epoch for the current time stamp from the nginx cached time (no syscall involved unlike Lua's date library).
 </p>
@@ -2775,7 +2903,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>secs = ngx.now()</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Returns a floating-point number for the elapsed time in seconds (including milliseconds as the decimal part) from the epoch for the current time stamp from the nginx cached time (no syscall involved unlike Lua's date library).
 </p>
@@ -2787,7 +2915,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>ngx.update_time()</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Forcibly updates the Nginx current time cache. This call involves a syscall and thus has some overhead, so do not abuse it.
 </p>
@@ -2797,7 +2925,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>str = ngx.localtime()</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Returns the current time stamp (in the format <code>yyyy-mm-dd hh:mm:ss</code>) of the nginx cached time (no syscall involved unlike Lua's <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-os.date">os.date</a> function).
 </p>
@@ -2807,7 +2935,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>str = ngx.utctime()</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Returns the current time stamp (in the format <code>yyyy-mm-dd hh:mm:ss</code>) of the nginx cached time (no syscall involved unlike Lua's <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-os.date">os.date</a> function).
 </p>
@@ -2817,9 +2945,9 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>str = ngx.cookie_time(sec)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
-<p>Returns a formated string can be used as the cookie expiration time. The parameter <code>sec</code> is the time stamp in seconds (like those returned from <a href="#ngx.time">ngx.time</a>).
+<p>Returns a formatted string can be used as the cookie expiration time. The parameter <code>sec</code> is the time stamp in seconds (like those returned from <a href="#ngx.time">ngx.time</a>).
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">    ngx.say<span class="br0">(</span>ngx.cookie_time<span class="br0">(</span><span class="nu0">1290079655</span><span class="br0">)</span><span class="br0">)</span>
         -- yields <span class="st0">"Thu, 18-Nov-10 11:27:35 GMT"</span></pre></div></div>
@@ -2827,7 +2955,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>str = ngx.http_time(sec)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Returns a formated string can be used as the http header time (for example, being used in <code>Last-Modified</code> header). The parameter <code>sec</code> is the time stamp in seconds (like those returned from <a href="#ngx.time">ngx.time</a>).
 </p>
@@ -2837,7 +2965,7 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </h2>
 <p><b>syntax:</b> <i>sec = ngx.parse_http_time(str)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Parse the http time string (as returned by <a href="#ngx.http_time">ngx.http_time</a>) into seconds. Returns the seconds or <code>nil</code> if the input string is in bad forms.
 </p>
@@ -2855,9 +2983,9 @@ before content is output with <a href="#ngx.say">ngx.say</a> or <a href="#ngx.pr
 </p>
 <h2> <span class="mw-headline" id="ngx.re.match"> ngx.re.match </span>
 </h2>
-<p><b>syntax:</b> <i>captures, err = ngx.re.match(subject, regex, options?, ctx?)</i>
+<p><b>syntax:</b> <i>captures, err = ngx.re.match(subject, regex, options?, ctx?, res_table?)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Matches the <code>subject</code> string using the Perl compatible regular expression <code>regex</code> with the optional <code>options</code>.
 </p>
@@ -2948,16 +3076,16 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
     -- m<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="sy0">==</span> <span class="st0">"美好"</span></pre></div></div>
 <p>The <code>o</code> option is useful for performance tuning, because the regex pattern in question will only be compiled once, cached in the worker-process level, and shared among all requests in the current Nginx worker process. The upper limit of the regex cache can be tuned via the <a href="#lua_regex_cache_max_entries">lua_regex_cache_max_entries</a> directive.
 </p>
-<p>The optional fourth argument, <code>ctx</code>, can be a Lua table holding an optional <code>pos</code> field. When the <code>pos</code> field in the <code>ctx</code> table argument is specified, <code>ngx.re.match</code> will start matching from that offset. Regardless of the presence of the <code>pos</code> field in the <code>ctx</code> table, <code>ngx.re.match</code> will always set this <code>pos</code> field to the position <i>after</i> the substring matched by the whole pattern in case of a successful match. When match fails, the <code>ctx</code> table will be left intact.
+<p>The optional fourth argument, <code>ctx</code>, can be a Lua table holding an optional <code>pos</code> field. When the <code>pos</code> field in the <code>ctx</code> table argument is specified, <code>ngx.re.match</code> will start matching from that offset (starting from 1). Regardless of the presence of the <code>pos</code> field in the <code>ctx</code> table, <code>ngx.re.match</code> will always set this <code>pos</code> field to the position <i>after</i> the substring matched by the whole pattern in case of a successful match. When match fails, the <code>ctx</code> table will be left intact.
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> ctx <span class="sy0">=</span> <span class="br0">{</span><span class="br0">}</span>
     <span class="kw1">local</span> m, err <span class="sy0">=</span> ngx.re.match<span class="br0">(</span><span class="st0">"1234, hello"</span>, <span class="st0">"[0-9]+"</span>, <span class="st0">""</span>, ctx<span class="br0">)</span>
          <span class="co1">-- m[0] = "1234"</span>
-         <span class="co1">-- ctx.pos == 4</span></pre></div></div>
+         <span class="co1">-- ctx.pos == 5</span></pre></div></div>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> ctx <span class="sy0">=</span> <span class="br0">{</span> pos <span class="sy0">=</span> <span class="nu0">2</span> <span class="br0">}</span>
     <span class="kw1">local</span> m, err <span class="sy0">=</span> ngx.re.match<span class="br0">(</span><span class="st0">"1234, hello"</span>, <span class="st0">"[0-9]+"</span>, <span class="st0">""</span>, ctx<span class="br0">)</span>
          <span class="co1">-- m[0] = "34"</span>
-         <span class="co1">-- ctx.pos == 4</span></pre></div></div>
+         <span class="co1">-- ctx.pos == 5</span></pre></div></div>
 <p>The <code>ctx</code> table argument combined with the <code>a</code> regex modifier can be used to construct a lexer atop <code>ngx.re.match</code>.
 </p>
 <p>Note that, the <code>options</code> argument is not optional when the <code>ctx</code> argument is specified and that the empty Lua string (<code>""</code>) must be used as placeholder for <code>options</code> if no meaningful regex options are required.
@@ -2967,13 +3095,59 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
 <p>To confirm that PCRE JIT is enabled, activate the Nginx debug log by adding the <code>--with-debug</code> option to Nginx or ngx_openresty's <code>./configure</code> script. Then, enable the "debug" error log level in <code>error_log</code> directive. The following message will be generated if PCRE JIT is enabled:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">    pcre JIT compiling result: 1</pre></div></div>
+<p>Starting from the <code>0.9.4</code> release, this function also accepts a 5th argument, <code>res_table</code>, for letting the caller supply the Lua table used to hold all the capturing results. This table will always be cleared before inserting the resulting capturing data. This is very useful for recycling Lua tables and saving GC and table allocation overhead.
+</p>
 <p>This feature was introduced in the <code>v0.2.1rc11</code> release.
+</p>
+<h2> <span class="mw-headline" id="ngx.re.find"> ngx.re.find </span>
+</h2>
+<p><b>syntax:</b> <i>from, to, err = ngx.re.find(subject, regex, options?, ctx?, nth?)</i>
+</p>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+</p>
+<p>Similar to <a href="#ngx.re.match">ngx.re.match</a> but only returns the begining index (<code>from</code>) and end index (<code>to</code>) of the matched substring. The returned indexes are 1-based and can be fed directly into the <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-string.sub">string.sub</a> API function to obtain the matched substring.
+</p>
+<p>In case of errors (like bad regexes or any PCRE runtime errors), this API function returns two <code>nil</code> values followed by a string describing the error.
+</p>
+<p>If no match is found, this function just returns a <code>nil</code> value.
+</p>
+<p>Below is an example:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> s <span class="sy0">=</span> <span class="st0">"hello, 1234"</span>
+    <span class="kw1">local</span> from, to, err <span class="sy0">=</span> ngx.re.find<span class="br0">(</span>s, <span class="st0">"([0-9]+)"</span>, <span class="st0">"jo"</span><span class="br0">)</span>
+    <span class="kw1">if</span> from <span class="kw1">then</span>
+        ngx.say<span class="br0">(</span><span class="st0">"from: "</span>, from<span class="br0">)</span>
+        ngx.say<span class="br0">(</span><span class="st0">"to: "</span>, to<span class="br0">)</span>
+        ngx.say<span class="br0">(</span><span class="st0">"matched: "</span>, <span class="kw1">string.sub</span><span class="br0">(</span>s, from, to<span class="br0">)</span><span class="br0">)</span>
+    <span class="kw1">else</span>
+        <span class="kw1">if</span> err <span class="kw1">then</span>
+            ngx.say<span class="br0">(</span><span class="st0">"error: "</span>, err<span class="br0">)</span>
+            <span class="kw1">return</span>
+        <span class="kw1">end</span>
+        ngx.say<span class="br0">(</span><span class="st0">"not matched!"</span><span class="br0">)</span>
+    <span class="kw1">end</span></pre></div></div>
+<p>This example produces the output
+</p>
+<pre>   from: 8
+   to: 11
+   matched: 1234
+</pre>
+<p>Because this API function does not create new Lua strings nor new Lua tables, it is much faster than <a href="#ngx.re.match">ngx.re.match</a>. It should be used wherever possible.
+</p>
+<p>Since the <code>0.9.3</code> release, an optional 5th argument, <code>nth</code>, is supported to specify which (submatch) capture's indexes to return. When <code>nth</code> is 0 (which is the default), the indexes for the whole matched substring is returned; when <code>nth</code> is 1, then the 1st submatch capture's indexes are returned; when <code>nth</code> is 2, then the 2nd submatch capture is returned, and so on. When the specified submatch does not have a match, then two <code>nil</code> values will be returned. Below is an example for this:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> str <span class="sy0">=</span> <span class="st0">"hello, 1234"</span>
+    <span class="kw1">local</span> from, to <span class="sy0">=</span> ngx.re.find<span class="br0">(</span>str, <span class="st0">"([0-9])([0-9]+)"</span>, <span class="st0">"jo"</span>, <span class="kw1">nil</span>, <span class="nu0">2</span><span class="br0">)</span>
+    <span class="kw1">if</span> from <span class="kw1">then</span>
+        ngx.say<span class="br0">(</span><span class="st0">"matched 2nd submatch: "</span>, <span class="kw1">string.sub</span><span class="br0">(</span>str, from, to<span class="br0">)</span><span class="br0">)</span>  <span class="co1">-- yields "234"</span>
+    <span class="kw1">end</span></pre></div></div>
+<p>This API function was first introduced in the <code>v0.9.2</code> release.
 </p>
 <h2> <span class="mw-headline" id="ngx.re.gmatch"> ngx.re.gmatch </span>
 </h2>
 <p><b>syntax:</b> <i>iterator, err = ngx.re.gmatch(subject, regex, options?)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Similar to <a href="#ngx.re.match">ngx.re.match</a>, but returns a Lua iterator instead, so as to let the user programmer iterate all the matches over the <code>&lt;subject&gt;</code> string argument with the PCRE <code>regex</code>.
 </p>
@@ -3041,7 +3215,7 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
 </h2>
 <p><b>syntax:</b> <i>newstr, n, err = ngx.re.sub(subject, regex, replace, options?)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Substitutes the first match of the Perl compatible regular expression <code>regex</code> on the <code>subject</code> argument string with the string or function argument <code>replace</code>. The optional <code>options</code> argument has exactly the same meaning as in <a href="#ngx.re.match">ngx.re.match</a>.
 </p>
@@ -3089,7 +3263,7 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
 </h2>
 <p><b>syntax:</b> <i>newstr, n, err = ngx.re.gsub(subject, regex, replace, options?)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Just like <a href="#ngx.re.sub">ngx.re.sub</a>, but does global substitution.
 </p>
@@ -3119,7 +3293,7 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
 </p>
 <p><b>syntax:</b> <i>dict = ngx.shared[name_var]</i>
 </p>
-<p><b>context:</b> <i>init_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_by_lua*, init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Fetching the shm-based Lua dictionary object for the shared memory zone named <code>DICT</code> defined by the <a href="#lua_shared_dict">lua_shared_dict</a> directive.
 </p>
@@ -3194,6 +3368,8 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
 <p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Retrieving the value in the dictionary <a href="#ngx.shared.DICT">ngx.shared.DICT</a> for the key <code>key</code>. If the key does not exist or has been expired, then <code>nil</code> will be returned.
+</p>
+<p>In case of errors, <code>nil</code> and a string describing the error will be returned.
 </p>
 <p>The value returned will have the original data type when they were inserted into the dictionary, for example, Lua booleans, numbers, or strings.
 </p>
@@ -3958,7 +4134,7 @@ and are returned in the same Lua table as key-value pairs as the numbered captur
 </ol>
 <p>For the first two cases, the "light thread" will usually be resumed later by the ngx_lua scheduler unless a "stop-the-world" event happens.
 </p>
-<p>User "light threads" can create "light threads" themselves and normal user coroutiens created by <a href="#coroutine.create">coroutine.create</a> can also create "light threads". The coroutine (be it a normal Lua coroutine or a "light thread") that directly spawns the "light thread" is called the "parent coroutine" for the "light thread" newly spawned.
+<p>User "light threads" can create "light threads" themselves. And normal user coroutines created by <a href="#coroutine.create">coroutine.create</a> can also create "light threads". The coroutine (be it a normal Lua coroutine or a "light thread") that directly spawns the "light thread" is called the "parent coroutine" for the "light thread" newly spawned.
 </p>
 <p>The "parent coroutine" can call <a href="#ngx.thread.wait">ngx.thread.wait</a> to wait on the termination of its child "light thread".
 </p>
@@ -4181,7 +4357,7 @@ to do manual time-slicing:
 </h2>
 <p><b>syntax:</b> <i>ok, err = ngx.timer.at(delay, callback, user_arg1, user_arg2, ...)</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>Creates an Nginx timer with a user callback function as well as optional user arguments.
 </p>
@@ -4205,8 +4381,10 @@ as the remaining arguments.
 trying to shut down, as in an Nginx configuration reload triggered by
 the <code>HUP</code> signal or in an Nginx server shutdown. When the Nginx worker
 is trying to shut down, one can no longer call <code>ngx.timer.at</code> to
-create new timers and in that case <code>ngx.timer.at</code> will return <code>nil</code> and
+create new timers with nonzero delays and in that case <code>ngx.timer.at</code> will return <code>nil</code> and
 a string describing the error, that is, "process exiting".
+</p>
+<p>Starting from the <code>v0.9.3</code> release, it is allowed to create zero-delay timers even when the Nginx worker process starts shutting down.
 </p>
 <p>When a timer expires, the user Lua code in the timer callback is
 running in a "light thread" detached completely from the original
@@ -4293,17 +4471,67 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>debug = ngx.config.debug</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*</i>
+<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*, init_worker_by_lua*</i>
 </p>
 <p>This boolean field indicates whether the current Nginx is a debug build, i.e., being built by the <code>./configure</code> option <code>--with-debug</code>.
 </p>
 <p>This field was first introduced in the <code>0.8.7</code>.
 </p>
+<h2> <span class="mw-headline" id="ngx.config.prefix"> ngx.config.prefix </span>
+</h2>
+<p><b>syntax:</b> <i>prefix = ngx.config.prefix()</i>
+</p>
+<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*, init_worker_by_lua*</i>
+</p>
+<p>Returns the Nginx server "prefix" path, as determined by the <code>-p</code> command-line option when running the nginx executable, or the path specified by the <code>--prefix</code> command-line option when building Nginx with the <code>./configure</code> script.
+</p>
+<p>This function was first introduced in the <code>0.9.2</code>.
+</p>
+<h2> <span class="mw-headline" id="ngx.config.nginx_version"> ngx.config.nginx_version </span>
+</h2>
+<p><b>syntax:</b> <i>ver = ngx.config.nginx_version</i>
+</p>
+<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*, init_worker_by_lua*</i>
+</p>
+<p>This field take an integral value indicating the version number of the current Nginx core being used. For example, the version number <code>1.4.3</code> results in the Lua number 1004003.
+</p>
+<p>This API was first introduced in the <code>0.9.3</code> release.
+</p>
+<h2> <span class="mw-headline" id="ngx.config.ngx_lua_version"> ngx.config.ngx_lua_version </span>
+</h2>
+<p><b>syntax:</b> <i>ver = ngx.config.ngx_lua_version</i>
+</p>
+<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*</i>
+</p>
+<p>This field take an integral value indicating the version number of the current <code>ngx_lua</code> module being used. For example, the version number <code>0.9.3</code> results in the Lua number 9003.
+</p>
+<p>This API was first introduced in the <code>0.9.3</code> release.
+</p>
+<h2> <span class="mw-headline" id="ngx.worker.exiting"> ngx.worker.exiting </span>
+</h2>
+<p><b>syntax:</b> <i>exiting = ngx.worker.exiting()</i>
+</p>
+<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*, init_worker_by_lua*</i>
+</p>
+<p>This function returns a boolean value indicating whether the current Nginx worker process already starts exiting. Nginx worker process exiting happens on Nginx server quit or configuration reload (aka HUP reload).
+</p>
+<p>This API was first introduced in the <code>0.9.3</code> release.
+</p>
+<h2> <span class="mw-headline" id="ngx.worker.pid"> ngx.worker.pid </span>
+</h2>
+<p><b>syntax:</b> <i>pid = ngx.worker.pid()</i>
+</p>
+<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*, init_by_lua*, init_worker_by_lua*</i>
+</p>
+<p>This function returns a Lua number for the process ID (PID) of the current Nginx worker process. This API is more efficient than <code>ngx.var.pid</code> and can be used in contexts where the <a href="#ngx.var.VARIABLE">ngx.var.VARIABLE</a> API cannot be used (like <a href="#init_worker_by_lua">init_worker_by_lua</a>).
+</p>
+<p>This API was first introduced in the <code>0.9.5</code> release.
+</p>
 <h2> <span class="mw-headline" id="ndk.set_var.DIRECTIVE"> ndk.set_var.DIRECTIVE </span>
 </h2>
 <p><b>syntax:</b> <i>res = ndk.set_var.DIRECTIVE_NAME</i>
 </p>
-<p><b>context:</b> <i>set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>init_worker_by_lua*, set_by_lua*, rewrite_by_lua*, access_by_lua*, content_by_lua*, header_filter_by_lua*, body_filter_by_lua*, log_by_lua*, ngx.timer.*</i>
 </p>
 <p>This mechanism allows calling other nginx C modules' directives that are implemented by <a rel="nofollow" class="external text" href="https://github.com/simpl/ngx_devel_kit">Nginx Devel Kit</a> (NDK)'s set_var submodule's <code>ndk_set_var_value</code>.
 </p>
@@ -4355,11 +4583,13 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>co = coroutine.create(f)</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, init_by_lua*, ngx.timer.*</i>
 </p>
 <p>Creates a user Lua coroutines with a Lua function, and returns a coroutine object.
 </p>
 <p>Similar to the standard Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-coroutine.create">coroutine.create</a> API, but works in the context of the Lua coroutines created by ngx_lua.
+</p>
+<p>This API was first usable in the context of <a href="#init_by_lua">init_by_lua*</a> since the <code>0.9.2</code>.
 </p>
 <p>This API was first introduced in the <code>v0.6.0</code> release.
 </p>
@@ -4367,11 +4597,13 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>ok, ... = coroutine.resume(co, ...)</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, init_by_lua*, ngx.timer.*</i>
 </p>
 <p>Resumes the executation of a user Lua coroutine object previously yielded or just created.
 </p>
 <p>Similar to the standard Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-coroutine.resume">coroutine.resume</a> API, but works in the context of the Lua coroutines created by ngx_lua.
+</p>
+<p>This API was first usable in the context of <a href="#init_by_lua">init_by_lua*</a> since the <code>0.9.2</code>.
 </p>
 <p>This API was first introduced in the <code>v0.6.0</code> release.
 </p>
@@ -4379,11 +4611,13 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>... = coroutine.yield(co, ...)</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, init_by_lua*, ngx.timer.*</i>
 </p>
 <p>Yields the executation of the current user Lua coroutine.
 </p>
 <p>Similar to the standard Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-coroutine.yield">coroutine.yield</a> API, but works in the context of the Lua coroutines created by ngx_lua.
+</p>
+<p>This API was first usable in the context of <a href="#init_by_lua">init_by_lua*</a> since the <code>0.9.2</code>.
 </p>
 <p>This API was first introduced in the <code>v0.6.0</code> release.
 </p>
@@ -4391,9 +4625,11 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>co = coroutine.wrap(f)</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, init_by_lua*, ngx.timer.*</i>
 </p>
 <p>Similar to the standard Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-coroutine.wrap">coroutine.wrap</a> API, but works in the context of the Lua coroutines created by ngx_lua.
+</p>
+<p>This API was first usable in the context of <a href="#init_by_lua">init_by_lua*</a> since the <code>0.9.2</code>.
 </p>
 <p>This API was first introduced in the <code>v0.6.0</code> release.
 </p>
@@ -4401,9 +4637,11 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>co = coroutine.running()</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, init_by_lua*, ngx.timer.*</i>
 </p>
 <p>Identical to the standard Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-coroutine.running">coroutine.running</a> API.
+</p>
+<p>This API was first usable in the context of <a href="#init_by_lua">init_by_lua*</a> since the <code>0.9.2</code>.
 </p>
 <p>This API was first enabled in the <code>v0.6.0</code> release.
 </p>
@@ -4411,17 +4649,19 @@ this context.
 </h2>
 <p><b>syntax:</b> <i>status = coroutine.status(co)</i>
 </p>
-<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, ngx.timer.*</i>
+<p><b>context:</b> <i>rewrite_by_lua*, access_by_lua*, content_by_lua*, init_by_lua*, ngx.timer.*</i>
 </p>
 <p>Identical to the standard Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-coroutine.status">coroutine.status</a> API.
+</p>
+<p>This API was first usable in the context of <a href="#init_by_lua">init_by_lua*</a> since the <code>0.9.2</code>.
 </p>
 <p>This API was first enabled in the <code>v0.6.0</code> release.
 </p>
 <h1> <span class="mw-headline" id="Lua.2FLuaJIT_bytecode_support"> Lua/LuaJIT bytecode support </span>
 </h1>
-<p>As from the <code>v0.5.0rc32</code> release, all <code>*_by_lua_file</code> configure directives (such as <a href="#content_by_lua_file">content_by_lua_file</a>) support loading Lua 5.1 and LuaJIT 2.0 raw bytecode files directly.
+<p>As from the <code>v0.5.0rc32</code> release, all <code>*_by_lua_file</code> configure directives (such as <a href="#content_by_lua_file">content_by_lua_file</a>) support loading Lua 5.1 and LuaJIT 2.0/2.1 raw bytecode files directly.
 </p>
-<p>Please note that the bytecode format used by LuaJIT 2.0 is not compatible with that used by the standard Lua 5.1 interpreter. So if using LuaJIT 2.0 with ngx_lua, LuaJIT compatible bytecode files must be generated as shown:
+<p>Please note that the bytecode format used by LuaJIT 2.0/2.1 is not compatible with that used by the standard Lua 5.1 interpreter. So if using LuaJIT 2.0/2.1 with ngx_lua, LuaJIT compatible bytecode files must be generated as shown:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>luajit<span class="sy0">/</span>bin<span class="sy0">/</span>luajit <span class="re5">-b</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>input_file.lua <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>output_file.luac</pre></div></div>
 <p>The <code>-bg</code> option can be used to include debug information in the LuaJIT bytecode file:
@@ -4431,17 +4671,24 @@ this context.
 </p>
 <p><a rel="nofollow" class="external free" href="http://luajit.org/running.html#opt_b">http://luajit.org/running.html#opt_b</a>
 </p>
+<p>Also, the bytecode files generated by LuaJIT 2.1 is <i>not</i> compatible with LuaJIT 2.0, and vice versa. The support for LuaJIT 2.1 bytecode was first added in ngx_lua v0.9.3.
+</p>
 <p>Similarly, if using the standard Lua 5.1 interpreter with ngx_lua, Lua compatible bytecode files must be generated using the <code>luac</code> commandline utility as shown:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    luac <span class="re5">-o</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>output_file.luac <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>input_file.lua</pre></div></div>
 <p>Unlike as with LuaJIT, debug information is included in standard Lua 5.1 bytecode files by default. This can be striped out by specifying the <code>-s</code> option as shown:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    luac <span class="re5">-s</span> <span class="re5">-o</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>output_file.luac <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>input_file.lua</pre></div></div>
-<p>Attempts to load standard Lua 5.1 bytecode files into ngx_lua instances linked to LuaJIT 2.0 or vice versa, will result in an error message, such as that below, being logged into the Nginx <code>error.log</code> file:
+<p>Attempts to load standard Lua 5.1 bytecode files into ngx_lua instances linked to LuaJIT 2.0/2.1 or vice versa, will result in an error message, such as that below, being logged into the Nginx <code>error.log</code> file:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="text source-text"><pre class="de1">    [error] 13909#0: *1 failed to load Lua inlined code: bad byte-code header in /path/to/test_file.luac</pre></div></div>
 <p>Loading bytecode files via the Lua primitives like <code>require</code> and <code>dofile</code> should always work as expected.
 </p>
+<h1> <span class="mw-headline" id="System_Environment_Variable_Support"> System Environment Variable Support </span>
+</h1>
+<p>If you want to access the system environment variable, say, <code>foo</code>, in Lua via the standard Lua API <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-os.getenv">os.getenv</a>, then you should also list this environment variable name in your <code>nginx.conf</code> file via the <a rel="nofollow" class="external text" href="http://nginx.org/en/docs/ngx_core_module.html#env">env directive</a>. For example,
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="nginx source-nginx"><pre class="de1">    <a href="/NginxHttpMainModule#env"><span class="kw1">env</span></a> foo<span class="sy0">;</span></pre></div></div>
 <h1> <span class="mw-headline" id="HTTP_1.0_support"> HTTP 1.0 support </span>
 </h1>
 <p>The HTTP 1.0 protocol does not support chunked output and requires an explicit <code>Content-Length</code> header when the response body is not empty in order to support the HTTP 1.0 keep-alive.
@@ -4454,6 +4701,56 @@ If the <code>Content-Length</code> response header is set in the running Lua cod
 </p>
 <p>Note that common HTTP benchmark tools such as <code>ab</code> and <code>http_load</code> issue HTTP 1.0 requests by default.
 To force <code>curl</code> to send HTTP 1.0 requests, use the <code>-0</code> option.
+</p>
+<h1> <span class="mw-headline" id="Statically_Linking_Pure_Lua_Modules"> Statically Linking Pure Lua Modules </span>
+</h1>
+<p>When LuaJIT 2.x is used, it is possible to statically link the bytecode of pure Lua modules into the Nginx executable.
+</p>
+<p>Basically you use the <code>luajit</code> executable to compile <code>.lua</code> Lua module files to <code>.o</code> object files containing the exported bytecode data, and then link the <code>.o</code> files directly in your Nginx build.
+</p>
+<p>Below is a trivial example to demonstrate this. Consider that we have the following <code>.lua</code> file named <code>foo.lua</code>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="co1">-- foo.lua</span>
+    <span class="kw1">local</span> _M <span class="sy0">=</span> <span class="br0">{</span><span class="br0">}</span>
+ 
+    <span class="kw1">function</span> _M.go<span class="br0">(</span><span class="br0">)</span>
+        <span class="kw1">print</span><span class="br0">(</span><span class="st0">"Hello from foo"</span><span class="br0">)</span>
+    <span class="kw1">end</span>
+ 
+    <span class="kw1">return</span> _M</pre></div></div>
+<p>And then we compile this <code>.lua</code> file to <code>foo.o</code> file:
+</p>
+<pre>   /path/to/luajit/bin/luajit -bg foo.lua foo.o
+</pre>
+<p>What matters here is the name of the <code>.lua</code> file, which determines how you use this module later on the Lua land. The file name <code>foo.o</code> does not matter at all except the <code>.o</code> file extension (which tells <code>luajit</code> what output format is used). If you want to strip the Lua debug information from the resulting bytecode, you can just specify the <code>-b</code> option above instead of <code>-bg</code>.
+</p>
+<p>Then when building Nginx or OpenResty, pass the <code>--with-ld-opt="foo.o"</code> option to the <code>./configure</code> script:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    .<span class="sy0">/</span>configure <span class="re5">--with-ld-opt</span>=<span class="st0">"/path/to/foo.o"</span> ...</pre></div></div>
+<p>Finally, you can just do the following in any Lua code run by ngx_lua:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> foo <span class="sy0">=</span> <span class="kw1">require</span> <span class="st0">"foo"</span>
+    foo.go<span class="br0">(</span><span class="br0">)</span></pre></div></div>
+<p>And this piece of code no longer depends on the external <code>foo.lua</code> file any more because it has already been compiled into the <code>nginx</code> executable.
+</p>
+<p>If you want to use dot in the Lua module name when calling <code>require</code>, as in
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> foo <span class="sy0">=</span> <span class="kw1">require</span> <span class="st0">"resty.foo"</span></pre></div></div>
+<p>then you need to rename the <code>foo.lua</code> file to <code>resty_foo.lua</code> before compiling it down to a <code>.o</code> file with the <code>luajit</code> command-line utility.
+</p>
+<p>It is important to use exactly the same version of LuaJIT when compiling <code>.lua</code> files to <code>.o</code> files as building nginx + ngx_lua. This is because the LuaJIT bytecode format may be incompatible between different LuaJIT versions. When the bytecode format is incompatible, you will see a Lua runtime error saying that the Lua module is not found.
+</p>
+<p>When you have multiple <code>.lua</code> files to compile and link, then just specify their <code>.o</code> files at the same time in the value of the <code>--with-ld-opt</code> option. For instance,
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    .<span class="sy0">/</span>configure <span class="re5">--with-ld-opt</span>=<span class="st0">"/path/to/foo.o /path/to/bar.o"</span> ...</pre></div></div>
+<p>If you have just too many <code>.o</code> files, then it might not be feasible to name them all in a single command. In this case, you can build a static library (or archive) for your <code>.o</code> files, as in
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    <span class="kw2">ar</span> rcus libmyluafiles.a <span class="sy0">*</span>.o</pre></div></div>
+<p>then you can link the <code>myluafiles</code> archive as a whole to your nginx executable:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    .<span class="sy0">/</span>configure \
+        <span class="re5">--with-ld-opt</span>=<span class="st0">"-L/path/to/lib -Wl,--whole-archive -lmyluafiles -Wl,--no-whole-archive"</span></pre></div></div>
+<p>where <code>/path/to/lib</code> is the path of the directory containing the <code>libmyluafiles.a</code> file. It should be noted that the linker option <code>--whole-archive</code> is required here because otherwise our archive will be skipped because no symbols in our archive are mentioned in the main parts of the nginx executable.
 </p>
 <h1> <span class="mw-headline" id="Data_Sharing_within_an_Nginx_Worker"> Data Sharing within an Nginx Worker </span>
 </h1>
@@ -4513,9 +4810,9 @@ This data sharing technique is essential for high performance Lua applications b
 <h2> <span class="mw-headline" id="Lua_Coroutine_Yielding.2FResuming"> Lua Coroutine Yielding/Resuming </span>
 </h2>
 <ul>
-<li> Lua's <code>dofile</code> builtin is implemented as a C function in both Lua 5.1 and LuaJIT 2.0 and when <a href="#ngx.location.capture">ngx.location.capture</a> is called, <a href="#ngx.exec">ngx.exec</a>, <a href="#ngx.exit">ngx.exit</a> or <a href="#ngx.req.read_body">ngx.req.read_body</a> or similar in the file to be loaded by <code>dofile</code>, a coroutine yield across the C function boundary will be initiated. This however is not normally allowed within ngx_lua and will usually result in error messages like <code>lua handler aborted: runtime error: attempt to yield across C-call boundary</code>. To avoid this, define a real Lua module and use the Lua <code>require</code> builtin instead.
+<li> Lua's <code>dofile</code> builtin is implemented as a C function in both Lua 5.1 and LuaJIT 2.0/2.1 and when <a href="#ngx.location.capture">ngx.location.capture</a> is called, <a href="#ngx.exec">ngx.exec</a>, <a href="#ngx.exit">ngx.exit</a> or <a href="#ngx.req.read_body">ngx.req.read_body</a> or similar in the file to be loaded by <code>dofile</code>, a coroutine yield across the C function boundary will be initiated. This however is not normally allowed within ngx_lua and will usually result in error messages like <code>lua handler aborted: runtime error: attempt to yield across C-call boundary</code>. To avoid this, define a real Lua module and use the Lua <code>require</code> builtin instead.
 </li>
-<li> As the standard Lua 5.1 interpreter's VM is not fully resumable, the methods <a href="#ngx.location.capture">ngx.location.capture</a>, <a href="#ngx.location.capture_multi">ngx.location.capture_multi</a>, <a href="#ngx.redirect">ngx.redirect</a>, <a href="#ngx.exec">ngx.exec</a>, and <a href="#ngx.exit">ngx.exit</a> cannot be used within the context of a Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-pcall">pcall()</a> or <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-xpcall">xpcall()</a> or even the first line of the <code>for ... in ...</code> statement when the standard Lua 5.1 interpreter is used and the <code>attempt to yield across metamethod/C-call boundary</code> error will be produced. Please use LuaJIT 2.0, which supports a fully resumable VM, to avoid this.
+<li> As the standard Lua 5.1 interpreter's VM is not fully resumable, the methods <a href="#ngx.location.capture">ngx.location.capture</a>, <a href="#ngx.location.capture_multi">ngx.location.capture_multi</a>, <a href="#ngx.redirect">ngx.redirect</a>, <a href="#ngx.exec">ngx.exec</a>, and <a href="#ngx.exit">ngx.exit</a> cannot be used within the context of a Lua <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-pcall">pcall()</a> or <a rel="nofollow" class="external text" href="http://www.lua.org/manual/5.1/manual.html#pdf-xpcall">xpcall()</a> or even the first line of the <code>for ... in ...</code> statement when the standard Lua 5.1 interpreter is used and the <code>attempt to yield across metamethod/C-call boundary</code> error will be produced. Please use LuaJIT 2.x, which supports a fully resumable VM, to avoid this.
 </li>
 </ul>
 <h2> <span class="mw-headline" id="Lua_Variable_Scope"> Lua Variable Scope </span>
@@ -4523,8 +4820,8 @@ This data sharing technique is essential for high performance Lua applications b
 <p>Care must be taken when importing modules and this form should be used:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">local</span> xxx <span class="sy0">=</span> <span class="kw1">require</span><span class="br0">(</span><span class="st0">'xxx'</span><span class="br0">)</span></pre></div></div>
-<dl><dd> instead of the old deprecated form:
-</dd></dl>
+<p>instead of the old deprecated form:
+</p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="lua source-lua"><pre class="de1">    <span class="kw1">require</span><span class="br0">(</span><span class="st0">'xxx'</span><span class="br0">)</span></pre></div></div>
 <p>Here is the reason: by design, the global environment has exactly the same lifetime as the Nginx request handler associated with it. Each request handler has its own set of Lua global variables and that is the idea of request isolation. The Lua module is actually loaded by the first Nginx request handler and is cached by the <code>require()</code> built-in in the package.loaded table for later reference, and <code>require()</code> has the side effect of setting a global variable to the loaded module table. But this global variable will be cleared at the end of the request handler,  and every subsequent request handler all has its own (clean) global environment. So one will get Lua exception for accessing the <code>nil</code> value.
 </p>
@@ -4635,13 +4932,16 @@ With this approach, the backslashes are only stripped by the Lua language parser
     <span class="kw1">local</span> m <span class="sy0">=</span> ngx.re.match<span class="br0">(</span><span class="st0">"hello, 1234"</span>, regex<span class="br0">)</span>
     <span class="kw1">if</span> m <span class="kw1">then</span> ngx.say<span class="br0">(</span>m<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="br0">)</span> <span class="kw1">else</span> ngx.say<span class="br0">(</span><span class="st0">"not matched!"</span><span class="br0">)</span> <span class="kw1">end</span>
     <span class="co1">-- evaluates to "1234"</span></pre></div></div>
-<h2><span class="mw-headline" id="Mixing_with_SSI_Not_Supported"> Mixing with SSI Not Supported </span></h2>
+<h2> <span class="mw-headline" id="Mixing_with_SSI_Not_Supported"> Mixing with SSI Not Supported </span>
+</h2>
 <p>Mixing SSI with ngx_lua in the same Nginx request is not supported at all. Just use ngx_lua exclusively. Everything you can do with SSI can be done atop ngx_lua anyway and it can be more efficient when using ngx_lua.
 </p>
-<h2><span class="mw-headline" id="SPDY_Mode_Not_Fully_Supported"> SPDY Mode Not Fully Supported </span></h2>
+<h2> <span class="mw-headline" id="SPDY_Mode_Not_Fully_Supported"> SPDY Mode Not Fully Supported </span>
+</h2>
 <p>Certain Lua APIs provided by ngx_lua do not work in Nginx's SPDY mode yet: <a href="#ngx.location.capture">ngx.location.capture</a>, <a href="#ngx.location.capture_multi">ngx.location.capture_multi</a>, and <a href="#ngx.req.socket">ngx.req.socket</a>.
 </p>
-<h1><span class="mw-headline" id="Typical_Uses"> Typical Uses </span></h1>
+<h1> <span class="mw-headline" id="Typical_Uses"> Typical Uses </span>
+</h1>
 <p>Just to name a few:
 </p>
 <ul>
@@ -4660,7 +4960,7 @@ With this approach, the backslashes are only stripped by the Lua language parser
 <li> using Lua to implement advanced caching mechanism for Nginx's subrequests and arbitrary locations.
 </li>
 </ul>
-<p>The possibilities are unlimited as the module allows bringing together various elements within Nginx as well as exposing the power of the Lua language to the user. The module provides the full flexibility of scripting while offering performance levels comparable with native C language programs both in terms of CPU time as well as memory footprint. This is particularly the case when LuaJIT 2.0 is enabled. 
+<p>The possibilities are unlimited as the module allows bringing together various elements within Nginx as well as exposing the power of the Lua language to the user. The module provides the full flexibility of scripting while offering performance levels comparable with native C language programs both in terms of CPU time as well as memory footprint. This is particularly the case when LuaJIT 2.x is enabled.
 </p>
 <p>Other scripting language implementations typically struggle to match this performance level.
 </p>
@@ -4668,13 +4968,14 @@ With this approach, the backslashes are only stripped by the Lua language parser
 </p>
 <p>On a ThinkPad T400 2.80 GHz laptop, the Hello World example readily achieves 28k req/sec using <code>http_load -p 10</code>. By contrast, Nginx + php-fpm 5.2.8 + Unix Domain Socket yields 6k req/sec and <a rel="nofollow" class="external text" href="http://nodejs.org/">Node.js</a> v0.6.1 yields 10.2k req/sec for their Hello World equivalents.
 </p>
-<h1><span class="mw-headline" id="Nginx_Compatibility"> Nginx Compatibility </span></h1>
+<h1> <span class="mw-headline" id="Nginx_Compatibility"> Nginx Compatibility </span>
+</h1>
 <p>The latest module is compatible with the following versions of Nginx:
 </p>
 <ul>
-<li> 1.5.x (last tested: 1.5.4)
+<li> 1.5.x (last tested: 1.5.8)
 </li>
-<li> 1.4.x (last tested: 1.4.2)
+<li> 1.4.x (last tested: 1.4.4)
 </li>
 <li> 1.3.x (last tested: 1.3.11)
 </li>
@@ -4689,17 +4990,18 @@ With this approach, the backslashes are only stripped by the Lua language parser
 <li> 0.8.x &gt;= 0.8.54 (last tested: 0.8.54)
 </li>
 </ul>
-<h1><span class="mw-headline" id="Code_Repository"> Code Repository </span></h1>
+<h1> <span class="mw-headline" id="Code_Repository"> Code Repository </span>
+</h1>
 <p>The code repository of this project is hosted on github at <a rel="nofollow" class="external text" href="http://github.com/chaoslawful/lua-nginx-module">chaoslawful/lua-nginx-module</a>.
 </p>
 <h1> <span class="mw-headline" id="Installation"> Installation </span>
 </h1>
-<p>The <a rel="nofollow" class="external text" href="http://openresty.org">ngx_openresty bundle</a> can be used to install Nginx, ngx_lua, either one of the standard Lua 5.1 interpreter or LuaJIT 2.0, as well as a package of powerful companion Nginx modules. The basic installation step is a simple <code>./configure --with-luajit &amp;&amp; make &amp;&amp; make install</code>.
+<p>The <a rel="nofollow" class="external text" href="http://openresty.org">ngx_openresty bundle</a> can be used to install Nginx, ngx_lua, either one of the standard Lua 5.1 interpreter or LuaJIT 2.0/2.1, as well as a package of powerful companion Nginx modules. The basic installation step is a simple <code>./configure --with-luajit &amp;&amp; make &amp;&amp; make install</code>.
 </p>
 <p>Alternatively, ngx_lua can be manually compiled into Nginx:
 </p>
 <ol>
-<li> Install LuaJIT 2.0 (recommended) or Lua 5.1 (Lua 5.2 is <i>not</i> supported yet). LuajIT can be downloaded from the <a rel="nofollow" class="external text" href="http://luajit.org/download.html">the LuaJIT project website</a> and Lua 5.1, from the <a rel="nofollow" class="external text" href="http://www.lua.org/">Lua project website</a>.  Some distribution package managers also distribute LuajIT and/or Lua.
+<li> Install LuaJIT 2.0 or 2.1 (recommended) or Lua 5.1 (Lua 5.2 is <i>not</i> supported yet). LuajIT can be downloaded from the <a rel="nofollow" class="external text" href="http://luajit.org/download.html">the LuaJIT project website</a> and Lua 5.1, from the <a rel="nofollow" class="external text" href="http://www.lua.org/">Lua project website</a>.  Some distribution package managers also distribute LuajIT and/or Lua.
 </li>
 <li> Download the latest version of the ngx_devel_kit (NDK) module <a rel="nofollow" class="external text" href="http://github.com/simpl/ngx_devel_kit/tags">HERE</a>.
 </li>
@@ -4710,13 +5012,17 @@ With this approach, the backslashes are only stripped by the Lua language parser
 </ol>
 <p>Build the source with this module:
 </p>
-<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    <span class="kw2">wget</span> <span class="st_h">'http://nginx.org/download/nginx-1.4.2.tar.gz'</span>
-    <span class="kw2">tar</span> <span class="re5">-xzvf</span> nginx-1.4.2.tar.gz
-    <span class="kw3">cd</span> nginx-1.4.2<span class="sy0">/</span>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1">    <span class="kw2">wget</span> <span class="st_h">'http://nginx.org/download/nginx-1.5.8.tar.gz'</span>
+    <span class="kw2">tar</span> <span class="re5">-xzvf</span> nginx-1.5.8.tar.gz
+    <span class="kw3">cd</span> nginx-1.5.8<span class="sy0">/</span>
  
-    <span class="co0"># tell nginx's build system where to find LuaJIT:</span>
+    <span class="co0"># tell nginx's build system where to find LuaJIT 2.0:</span>
     <span class="kw3">export</span> <span class="re2">LUAJIT_LIB</span>=<span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>luajit<span class="sy0">/</span>lib
     <span class="kw3">export</span> <span class="re2">LUAJIT_INC</span>=<span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>luajit<span class="sy0">/</span>include<span class="sy0">/</span>luajit-<span class="nu0">2.0</span>
+ 
+    <span class="co0"># tell nginx's build system where to find LuaJIT 2.1:</span>
+    <span class="kw3">export</span> <span class="re2">LUAJIT_LIB</span>=<span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>luajit<span class="sy0">/</span>lib
+    <span class="kw3">export</span> <span class="re2">LUAJIT_INC</span>=<span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>luajit<span class="sy0">/</span>include<span class="sy0">/</span>luajit-<span class="nu0">2.1</span>
  
     <span class="co0"># or tell where to find Lua if using Lua instead:</span>
     <span class="co0">#export LUA_LIB=/path/to/lua/lib</span>
@@ -4731,12 +5037,12 @@ With this approach, the backslashes are only stripped by the Lua language parser
     <span class="kw2">make</span> <span class="kw2">install</span></pre></div></div>
 <h2> <span class="mw-headline" id="Installation_on_Ubuntu_11.10"> Installation on Ubuntu 11.10 </span>
 </h2>
-<p>Note that it is recommended to use LuaJIT 2.0 instead of the standard Lua 5.1 interpreter where possible. 
+<p>Note that it is recommended to use LuaJIT 2.0 or LuaJIT 2.1 instead of the standard Lua 5.1 interpreter wherever possible.
 </p>
 <p>If the standard Lua 5.1 interpreter is required however, run the following command to install it from the Ubuntu repository:
 </p>
 <div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="bash source-bash"><pre class="de1"><span class="kw2">apt-get</span> <span class="kw2">install</span> <span class="re5">-y</span> lua5.1 liblua5.1-<span class="nu0">0</span> liblua5.1-<span class="nu0">0</span>-dev</pre></div></div>
-<p>Everything should be installed correctly, except for one small tweak. 
+<p>Everything should be installed correctly, except for one small tweak.
 </p>
 <p>Library name <code>liblua.so</code> has been changed in liblua5.1 package, it only comes with <code>liblua5.1.so</code>, which needs to be symlinked to <code>/usr/lib</code> so it could be found during the configuration process.
 </p>
@@ -4766,10 +5072,6 @@ With this approach, the backslashes are only stripped by the Lua language parser
 <h2> <span class="mw-headline" id="Short_Term"> Short Term </span>
 </h2>
 <ul>
-<li> review and apply Brian Akin's patch for the new directive <code>lua_socket_log_errors</code>.
-</li>
-<li> review and apply Brian Akin's patch for the new <code>shdict:flush_expired()</code> API.
-</li>
 <li> implement the SSL cosocket API.
 </li>
 <li> review and apply Jader H. Silva's patch for <code>ngx.re.split()</code>.
@@ -4782,18 +5084,12 @@ With this approach, the backslashes are only stripped by the Lua language parser
 </li>
 <li> add directives to run Lua codes when nginx stops.
 </li>
-<li> add APIs to access cookies as key/value pairs.
-</li>
 <li> add <code>ignore_resp_headers</code>, <code>ignore_resp_body</code>, and <code>ignore_resp</code> options to <a href="#ngx.location.capture">ngx.location.capture</a> and <a href="#ngx.location.capture_multi">ngx.location.capture_multi</a> methods, to allow micro performance tuning on the user side.
-</li>
-<li> implement new directive <code>lua_ignore_client_abort</code>.
 </li>
 </ul>
 <h2> <span class="mw-headline" id="Longer_Term"> Longer Term </span>
 </h2>
 <ul>
-<li> add lightweight thread API (i.e., the <code>ngx.thread</code> API) as demonstrated in <a rel="nofollow" class="external text" href="http://agentzh.org/misc/nginx/lua-thread2.lua">this sample code</a>.
-</li>
 <li> add automatic Lua code time slicing support by yielding and resuming the Lua VM actively via Lua's debug hooks.
 </li>
 <li> add <code>stat</code> mode similar to <a rel="nofollow" class="external text" href="http://httpd.apache.org/docs/2.3/mod/mod_lua.html">mod_lua</a>.
@@ -4830,6 +5126,8 @@ With this approach, the backslashes are only stripped by the Lua language parser
 <li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/srcache-nginx-module">ngx_srcache</a>
 </li>
 <li> ngx_lua (i.e., this module)
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-upstream-nginx-module">ngx_lua_upstream</a>
 </li>
 <li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/headers-more-nginx-module">ngx_headers_more</a>
 </li>
@@ -4876,39 +5174,252 @@ filtering chain determines the final output, for example. The correct adding ord
 </p>
 <p>There are also various testing modes based on mockeagain, valgrind, and etc. Refer to the <a rel="nofollow" class="external text" href="http://search.cpan.org/perldoc?Test::Nginx">Test::Nginx documentation</a> for more details for various advanced testing modes. See also the test reports for the Nginx test cluster running on Amazon EC2: <a rel="nofollow" class="external free" href="http://qa.openresty.org">http://qa.openresty.org</a>.
 </p>
-
+<h1> <span class="mw-headline" id="Copyright_and_License"> Copyright and License </span>
+</h1>
 <p>This module is licensed under the BSD license.
 </p>
-<p>Copyright (C) 2009-2013, by Xiaozhe Wang (chaoslawful) &lt;chaoslawful@gmail.com&gt;.
+<p>Copyright (C) 2009-2014, by Xiaozhe Wang (chaoslawful) &lt;chaoslawful@gmail.com&gt;.
 </p>
-<p>Copyright (C) 2009-2013, by Yichun "agentzh" Zhang (章亦春) &lt;agentzh@gmail.com&gt;, CloudFlare Inc.
+<p>Copyright (C) 2009-2014, by Yichun "agentzh" Zhang (章亦春) &lt;agentzh@gmail.com&gt;, CloudFlare Inc.
 </p>
-
-
-
-
-
-
-
-
-
+<p>All rights reserved.
+</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+</p>
+<ul><li> Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+</li></ul>
+<ul><li> Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+</li></ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</p>
+<h1> <span class="mw-headline" id="See_Also"> See Also </span>
+</h1>
+<ul>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-memcached">lua-resty-memcached</a> library based on ngx_lua cosocket.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-redis">lua-resty-redis</a> library based on ngx_lua cosocket.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-mysql">lua-resty-mysql</a> library based on ngx_lua cosocket.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-upload">lua-resty-upload</a> library based on ngx_lua cosocket.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-dns">lua-resty-dns</a> library based on ngx_lua cosocket.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-websocket">lua-resty-websocket</a> library for both WebSocket server and client, based on ngx_lua cosocket.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-string">lua-resty-string</a> library based on <a rel="nofollow" class="external text" href="http://luajit.org/ext_ffi.html">LuaJIT FFI</a>.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/agentzh/lua-resty-lock">lua-resty-lock</a> library for a nonblocking simple lock API.
+</li>
+<li> <a rel="nofollow" class="external text" href="http://openresty.org/#RoutingMySQLQueriesBasedOnURIArgs">Routing requests to different MySQL queries based on URI arguments</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="http://openresty.org/#DynamicRoutingBasedOnRedis">Dynamic Routing Based on Redis and Lua</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="http://openresty.org/#UsingLuaRocks">Using LuaRocks with ngx_lua</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/chaoslawful/lua-nginx-module/wiki/Introduction">Introduction to ngx_lua</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/simpl/ngx_devel_kit">ngx_devel_kit</a>
+</li>
+<li> <a href="/HttpEchoModule" title="HttpEchoModule">HttpEchoModule</a>
+</li>
+<li> <a href="/HttpDrizzleModule" title="HttpDrizzleModule">HttpDrizzleModule</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="http://github.com/FRiCKLE/ngx_postgres">postgres-nginx-module</a>
+</li>
+<li> <a href="/HttpMemcModule" title="HttpMemcModule">HttpMemcModule</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="http://openresty.org">The ngx_openresty bundle</a>
+</li>
+<li> <a rel="nofollow" class="external text" href="https://github.com/agentzh/nginx-systemtap-toolkit">Nginx Systemtap Toolkit</a>
+</li>
+</ul>
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 4357/1000000
+Preprocessor generated node count: 0/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key wikidbnew:pcache:idhash:889-0!*!0!!en!*!* and timestamp 20140212155236 -->
 </div>
-            
+<div class="printfooter">
+Retrieved from "<a href="http://wiki.nginx.org/index.php?title=HttpLuaModule&amp;oldid=27312">http://wiki.nginx.org/index.php?title=HttpLuaModule&amp;oldid=27312</a>"</div>
+            <!--<div id="catlinks"><div id='catlinks' class='catlinks catlinks-allhidden'></div></div>-->
 
 
-	    
-	    
+	    <!-- end content -->
+	    <div class="visualClear"></div>
 	  </div>
-	</div>
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikidbnew:resourceloader:filter:minify-css:7:15ce99b8011ffc480f0d6e7a664a671b */</style>
+<style type="text/css">/*<![CDATA[*/
+.source-nginx {line-height: normal;}
+.source-nginx li, .source-nginx pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for nginx
+ * CSS class: source-nginx, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.nginx.source-nginx .de1, .nginx.source-nginx .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.nginx.source-nginx  {font-family:monospace;}
+.nginx.source-nginx .imp {font-weight: bold; color: red;}
+.nginx.source-nginx li, .nginx.source-nginx .li1 {font-weight: normal; vertical-align:top;}
+.nginx.source-nginx .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.nginx.source-nginx .li2 {font-weight: bold; vertical-align:top;}
+.nginx.source-nginx .kw1 {color: #b1b100;}
+.nginx.source-nginx .kw2 {color: #000000; font-weight: bold;}
+.nginx.source-nginx .kw3 {color: #000066;}
+.nginx.source-nginx .kw4 {color: #993333;}
+.nginx.source-nginx .co1 {color: #808080; font-style: italic;}
+.nginx.source-nginx .co2 {color: #339933;}
+.nginx.source-nginx .coMULTI {color: #808080; font-style: italic;}
+.nginx.source-nginx .es0 {color: #000099; font-weight: bold;}
+.nginx.source-nginx .br0 {color: #66cc66;}
+.nginx.source-nginx .sy0 {color: #66cc66;}
+.nginx.source-nginx .st0 {color: #ff0000;}
+.nginx.source-nginx .me1 {color: #202020;}
+.nginx.source-nginx .me2 {color: #202020;}
+.nginx.source-nginx .ln-xtra, .nginx.source-nginx li.ln-xtra, .nginx.source-nginx div.ln-xtra {background-color: #ffc;}
+.nginx.source-nginx span.xtra { display:block; }
 
-       
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Geshi.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
 
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Geshi.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+.source-lua {line-height: normal;}
+.source-lua li, .source-lua pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for lua
+ * CSS class: source-lua, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.lua.source-lua .de1, .lua.source-lua .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.lua.source-lua  {font-family:monospace;}
+.lua.source-lua .imp {font-weight: bold; color: red;}
+.lua.source-lua li, .lua.source-lua .li1 {font-weight: normal; vertical-align:top;}
+.lua.source-lua .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.lua.source-lua .li2 {font-weight: bold; vertical-align:top;}
+.lua.source-lua .kw1 {color: #b1b100;}
+.lua.source-lua .co1 {color: #808080; font-style: italic;}
+.lua.source-lua .coMULTI {color: #808080; font-style: italic;}
+.lua.source-lua .es0 {color: #000099; font-weight: bold;}
+.lua.source-lua .br0 {color: #66cc66;}
+.lua.source-lua .sy0 {color: #66cc66;}
+.lua.source-lua .st0 {color: #ff0000;}
+.lua.source-lua .nu0 {color: #cc66cc;}
+.lua.source-lua .me0 {color: #b1b100;}
+.lua.source-lua .ln-xtra, .lua.source-lua li.ln-xtra, .lua.source-lua div.ln-xtra {background-color: #ffc;}
+.lua.source-lua span.xtra { display:block; }
 
-    
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Geshi.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+.source-bash {line-height: normal;}
+.source-bash li, .source-bash pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for bash
+ * CSS class: source-bash, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.bash.source-bash .de1, .bash.source-bash .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.bash.source-bash  {font-family:monospace;}
+.bash.source-bash .imp {font-weight: bold; color: red;}
+.bash.source-bash li, .bash.source-bash .li1 {font-weight: normal; vertical-align:top;}
+.bash.source-bash .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.bash.source-bash .li2 {font-weight: bold; vertical-align:top;}
+.bash.source-bash .kw1 {color: #000000; font-weight: bold;}
+.bash.source-bash .kw2 {color: #c20cb9; font-weight: bold;}
+.bash.source-bash .kw3 {color: #7a0874; font-weight: bold;}
+.bash.source-bash .co0 {color: #666666; font-style: italic;}
+.bash.source-bash .co1 {color: #800000;}
+.bash.source-bash .co2 {color: #cc0000; font-style: italic;}
+.bash.source-bash .co3 {color: #000000; font-weight: bold;}
+.bash.source-bash .es1 {color: #000099; font-weight: bold;}
+.bash.source-bash .es2 {color: #007800;}
+.bash.source-bash .es3 {color: #007800;}
+.bash.source-bash .es4 {color: #007800;}
+.bash.source-bash .es5 {color: #780078;}
+.bash.source-bash .es_h {color: #000099; font-weight: bold;}
+.bash.source-bash .br0 {color: #7a0874; font-weight: bold;}
+.bash.source-bash .sy0 {color: #000000; font-weight: bold;}
+.bash.source-bash .st0 {color: #ff0000;}
+.bash.source-bash .st_h {color: #ff0000;}
+.bash.source-bash .nu0 {color: #000000;}
+.bash.source-bash .re0 {color: #007800;}
+.bash.source-bash .re1 {color: #007800;}
+.bash.source-bash .re2 {color: #007800;}
+.bash.source-bash .re4 {color: #007800;}
+.bash.source-bash .re5 {color: #660033;}
+.bash.source-bash .ln-xtra, .bash.source-bash li.ln-xtra, .bash.source-bash div.ln-xtra {background-color: #ffc;}
+.bash.source-bash span.xtra { display:block; }
 
-
-
-
-
-</body>
-</html>
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Geshi.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+/*]]>*/
+</style>
+<style type="text/css">
+li#pt-openidlogin {
+background: url(/extensions/OpenID/skin/icons/openid-inputicon.png) top left no-repeat;
+padding-left: 20px;
+text-transform: none;
+}
+</style>
+</body></html>

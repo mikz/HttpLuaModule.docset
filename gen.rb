@@ -27,7 +27,6 @@ headings.each do |heading|
   when 'h2'
     puts "INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ('#{text}', 'Function', '#{file}##{id}');"
   else
-    puts "UNKNOWN ELEMENT: #{heading.to_html}"
+    raise "UNKNOWN ELEMENT: #{heading.to_html}"
   end
 end  
-  
